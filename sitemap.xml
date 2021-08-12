@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2021/08/11/linux%E4%B8%AD%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%82%E8%BD%BD%EF%BC%9F/</loc>
+    <loc>http://zhanglei-underdog.github.io/2021/08/11/linux%E4%B8%AD%E4%BB%80%E4%B9%88%E6%98%AF%E6%8C%82%E8%BD%BD%EF%BC%9F/</loc>
     
     <lastmod>2021-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>http://zhanglei-underdog.github.io/about/index.html</loc>
     
     <lastmod>2021-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>http://zhanglei-underdog.github.io/tags/index.html</loc>
     
     <lastmod>2021-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>http://zhanglei-underdog.github.io/categories/index.html</loc>
     
     <lastmod>2021-08-11</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/08/11/hello-world/</loc>
+    <loc>http://zhanglei-underdog.github.io/2021/08/11/hello-world/</loc>
     
     <lastmod>2021-08-11</lastmod>
     
@@ -38,7 +38,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>http://zhanglei-underdog.github.io/</loc>
     <lastmod>2021-08-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -46,7 +46,7 @@
 
   
   <url>
-    <loc>http://example.com/tags/%E6%8C%82%E8%BD%BD/</loc>
+    <loc>http://zhanglei-underdog.github.io/tags/%E6%8C%82%E8%BD%BD/</loc>
     <lastmod>2021-08-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -55,7 +55,7 @@
 
   
   <url>
-    <loc>http://example.com/categories/Linux/</loc>
+    <loc>http://zhanglei-underdog.github.io/categories/Linux/</loc>
     <lastmod>2021-08-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>我们慢慢开始长大了</title>
+      <link href="/2021/08/15/%E6%88%91%E4%BB%AC%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E9%95%BF%E5%A4%A7%E4%BA%86/"/>
+      <url>/2021/08/15/%E6%88%91%E4%BB%AC%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E9%95%BF%E5%A4%A7%E4%BA%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="长大"><a href="#长大" class="headerlink" title="长大"></a><strong>长大</strong></h1><p>​        我是1997年出生的一个小毛孩，不，现在不能说是小毛孩了。现在都已经24岁了，今天还穿着本命年该穿的红裤衩。最近一直有一个隐形的声音在我耳旁一直呼唤到“张磊，你已经长大了，父母开始变老了，该你来撑起这个家了”。我思绪万千，不得不承认自己长大了。如果还不想承认的话，那就看看自己身份证上的年龄吧，它是最诚实的。</p><h1 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a><strong>感悟</strong></h1><p>​        我无法避免长大，妹妹今年也都高三了。我想在这个关键的时间段，对自己做出一些改变。我想让自己在一年后找到一份好工作，在两年后顺利毕业。这是我人生中重要的一步。</p><h1 id="怎样做"><a href="#怎样做" class="headerlink" title="怎样做"></a><strong>怎样做</strong></h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 个人感悟 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 成长 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo博客搭建流程</title>
+      <link href="/2021/08/14/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/"/>
+      <url>/2021/08/14/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%B5%81%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="hexo博客搭建流程"><a href="#hexo博客搭建流程" class="headerlink" title="hexo博客搭建流程"></a><strong>hexo博客搭建流程</strong></h1><p>历经三天，我的博客终于达到了能接受的程度，还是挺开心的，因为一直都想写写博客的，一来呢：是为了记录一下自己学习的内容，做好分类。过去的几年自己确实学了不少东西，单片机啊，高数啊，JAVA基础啊，MySQL基础啊，python，数据结构…… 但都因为没有好好的整理与复习，导致自己容易遗忘，实属可惜。趁着暑假这个机会，我铁了心的想搭个博客。二来呢：为了找工作做准备，听说写博客是一个不错的个人名片。</p><p>废话少说，我把这次搭建博客的流程附上（本次安装在window10下操作，linux也差不多）：</p><h1 id="第一大块"><a href="#第一大块" class="headerlink" title="第一大块"></a><strong>第一大块</strong></h1><h2 id="安装hexo模板"><a href="#安装hexo模板" class="headerlink" title="安装hexo模板"></a><a href="https://www.bilibili.com/video/BV1Yb411a7ty">安装hexo模板</a></h2><ol><li><p>安装git工具   <a href="https://git-scm.com/">附上链接</a></p></li><li><p>安装<a href="https://nodejs.org/en/">Nodejs</a></p></li><li><p>创建一个文件夹（blog），在该文件夹下右键，选择git bash.</p><p><img src="/articleImg/second_article/image1.png"></p></li></ol><p>​            4.在git bash中进行如下安装操作：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">node -v#查看node版本</span><br><span class="line">npm -v#查看npm版本</span><br><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org#安装淘宝的cnpm 管理器</span><br><span class="line">cnpm -v#查看cnpm版本</span><br><span class="line">cnpm install -g hexo-cli    #安装hexo框架</span><br><span class="line">hexo -v#查看hexo版本</span><br><span class="line">mkdir blog#创建blog目录</span><br><span class="line">cd blog #进入blog目录</span><br><span class="line">sudo hexo init #生成博客 初始化博客</span><br><span class="line">hexo s#启动本地博客服务</span><br><span class="line">http://localhost:4000/#本地访问地址</span><br><span class="line">hexo n 我的第一篇文章 #创建新的文章 </span><br><span class="line">#返回blog目录</span><br><span class="line">hexo clean #清理</span><br><span class="line">hexo g #生成</span><br><span class="line">#Github创建一个新的仓库 YourGithubName.github.io</span><br><span class="line">cnpm install --save hexo-deployer-git #在blog目录下安装git部署插件</span><br></pre></td></tr></table></figure><h2 id="配置本地hexo"><a href="#配置本地hexo" class="headerlink" title="配置本地hexo"></a>配置本地hexo</h2><p>这里其实改动的地方也不是很多。</p><p>​        1，配置_config.yml </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line"> repo: https://github.com/YourGithubName/YourGithubName.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure><p>​        2，git bash中下载一个自己喜欢的主题，这里我下载的是butterfly</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 下载主题</span><br><span class="line">git clone -b master https://github.com/jerryc127/hexo-theme-butterfly.git themes/butterfly</span><br><span class="line"># 解决报错 。如果沒有 pug 以及 stylus 的渲染器，还需要下载，否则在项目运行时会报错：</span><br><span class="line">cnpm install hexo-renderer-pug hexo-renderer-stylus --save</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>​        3，若想让自己的主题生效，还得配置博客根目录下的config.yml文件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">修改source\categories文件夹下index.md文件为下面的代码</span><br><span class="line">---</span><br><span class="line">title: 分类</span><br><span class="line">date: 2020-03-04 17:18:32</span><br><span class="line">type: categories</span><br><span class="line">layout: categories   #注意此行不添加则点击不会显示分类结果</span><br><span class="line">---</span><br></pre></td></tr></table></figure><h1 id="第二大块"><a href="#第二大块" class="headerlink" title="第二大块"></a><strong>第二大块</strong></h1><h2 id="butterfly的美化"><a href="#butterfly的美化" class="headerlink" title="butterfly的美化"></a>butterfly的美化</h2><p>下面就是butterfly的美化了（主要修改主题文件夹下的config.yml文件），看着别人做的博客，确实很眼馋，自己改了又改，总觉得不满意，有那么一两个钟，我总是和一个样式美化不显示过不去，最后自己用尽对比、排除的方法，都没得到很好的解决。最终发现原来是浏览器没有清理缓存。这里提一句hexo clean 与 hexo c效果不一样,我在这个命令上吃了大亏，不要图省事就输入简写。</p><p>下面推荐几个我使用过的主题美化网站，这里面的博主写的都挺详细的，我在这里也就不重复了。嘻嘻</p><ol><li>首当其冲的肯定是GitHub上该主题的博主，在500多个closed issue中肯定能找到你想要的解决样式问题的答案。</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/jerryc127/hexo-theme-butterfly/issues</span><br></pre></td></tr></table></figure><p>​            2.  下面几个网址都是关于美化博客，其他博主写的文章，写的都蛮详细的。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 该网址在最下方贴出了很多了美化博客的传递门，可以上车</span><br><span class="line">https://butterfly.js.org/posts/7670b080/</span><br><span class="line"></span><br><span class="line"># 美化主题</span><br><span class="line">https://www.cnblogs.com/MoYu-zc/p/14395965.html</span><br><span class="line"></span><br><span class="line"># 美化主题</span><br><span class="line">https://blog.imzjw.cn/posts/b74f504f/</span><br></pre></td></tr></table></figure><p>​             3.给博客添加一些小功能            </p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 添加评论系统</span><br><span class="line">https://blog.csdn.net/qq_35117024/article/details/107248047</span><br><span class="line"></span><br><span class="line">#添加分类雷达、日历图等数据统计</span><br><span class="line">https://guole.fun/posts/18158/</span><br></pre></td></tr></table></figure><p>​             4.这里记录几个比较好看的博客地址，以后有时间，自己在仿照魔改一下，哈哈</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">博主 : 花猪のBlog </span><br><span class="line">https://cnhuazhu.gitee.io/</span><br></pre></td></tr></table></figure><h2 id="第三大块"><a href="#第三大块" class="headerlink" title="第三大块"></a>第三大块</h2><p>这个大块简单记录一些些小问题，以后可能会用到。</p><p>Number one : 首先记录几个命令，每次调试的时候都很实用</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 这两个把clean,生成，运行放在一起，省的自己每次要在git bash中输入三次命令。</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s -p 3999</span><br><span class="line"></span><br><span class="line">#这两是创建新的分区时使用</span><br><span class="line">hexo new page tags</span><br><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure><p>这里创建之后有两个问题需要注意，不然你的目录，和分类不会显示！</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1：修改source\categories文件夹下index.md文件为下面的代码</span><br><span class="line">        ---</span><br><span class="line">        title: 分类</span><br><span class="line">        date: 2020-03-04 17:18:32</span><br><span class="line">        type: categories</span><br><span class="line">        layout: categories   #注意此行不添加则点击不会显示分类结果</span><br><span class="line">        ---</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2：修改编辑scaffolds/post.md</span><br><span class="line">        ---</span><br><span class="line">        title: &#123;&#123; title &#125;&#125;</span><br><span class="line">        date: &#123;&#123; date &#125;&#125;</span><br><span class="line">        tags: &#123;&#123; tags &#125;&#125;</span><br><span class="line">        ---</span><br><span class="line">scaffolds/draft.md    scaffolds/pages.md 同理</span><br></pre></td></tr></table></figure><p>Number two: 当你不想用https进行 git传送时，可以通过下面的链接更改为SSH传送，我个人感觉SSH传送更稳定。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://blog.csdn.net/qq_43768946/article/details/90411154?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control</span><br><span class="line"># 脑大 ，这个url怎么这么长....</span><br></pre></td></tr></table></figure><p>Number two: 当你hexo d传送不成功，可能是你的局域网问题吧，在windows -&gt; 控制面板 -&gt; 网络和Internet -&gt; Internet选项 -&gt; 连接 -&gt; 局域网设置  : 在这里取消代理服务器，更改位自动检测。</p><p>​    我就在自动检测和代理服务器这里切换切换，就上传了，大概就是应为传送时被墙的原因。</p><p>暂时先更新到这里吧~ 后面如果有相关优化，我会持续更新</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 博客搭建 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>什么是Linux挂载？</title>
+      <link href="/2021/08/13/%E4%BB%80%E4%B9%88%E6%98%AFLinux%E6%8C%82%E8%BD%BD%EF%BC%9F/"/>
+      <url>/2021/08/13/%E4%BB%80%E4%B9%88%E6%98%AFLinux%E6%8C%82%E8%BD%BD%EF%BC%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="什么是挂载？mount的用处在哪？"><a href="#什么是挂载？mount的用处在哪？" class="headerlink" title="什么是挂载？mount的用处在哪？"></a>什么是挂载？mount的用处在哪？</h1><p>1.提一句Windows下，mount挂载，就是给磁盘分区提供一个盘符（C,D,E,…）。比如插入U盘后系统自动分配给了它I:盘符其实就是挂载，退优盘的时候进行安全弹出，其实就是卸载unmount。</p><p>2.Linux下，不像Windows可以有C,D,E,多个目录，Linux只有一个根目录/。在装系统时，我们分配给linux的所有区都在/下的某个位置，比如/home等等。</p><p>3.提问者插入了新硬盘，分了新磁盘区sdb1。它现在还不属于/。</p><p>4.我们虽然可以在一些图形桌面系统里找到他的位置，浏览管理里面的文件，但在命令行却不知怎么访问它的目录，比如无法使用cd或者ls。也无法在编程时指定一个目录对它操作。</p><p>5.这时提问者使用了 mount /dev/sdb1 <del>/Share/ ，把新硬盘的区sdb1挂载到工作目录的</del>/Share/文件夹下，之后访问这个~/Share/文件夹就相当于访问这个硬盘2的sdb1分区了。对/Share/的任何操作，都相当于对sdb1里文件的操作。</p><p>6.所以Linux下，<span style='color:fuchsia'>mount挂载的作用，就是将一个设备（通常是存储设备）挂接到一个已存在的目录上。访问这个目录就是访问该存储设备。</span></p><p>7.linux将整个计算机的资源都整合成一个大的文件目录。我们要访问存储设备中的文件，必须将文件所在的分区挂载到一个已存在的目录上，然后通过访问这个目录来访问存储设备。<span style='color:fuchsia'>挂载就是把设备放在一个目录下，让系统知道怎么管理这个设备里的文件，了解这个存储设备的可读写特性之类的过程。</span></p><p>8.我们不是有/dev/sdb1 吗，直接对它操作不就行了？这不是它的目录吗？</p><p>9.这不是它的目录。虽然/dev是个目录，但/dev/sdb1不是目录。可以发现ls/dev/sdb1无法执行。/dev/sdb1，是一个类似指针的东西，指向这个分区的原始数据块。mount前，系统并不知道这个数据块哪部分数据代表文件，如何对它们操作。</p><p>10.插入CD，系统其实自动执行了 mount /dev/cdrom /media/cdrom。所以可以直接在/media/cdrom中对CD中的内容进行管理。</p><p>总结来说：挂载就是把设备（如U盘）加入到linux现有目录下，进而可以进行相应的管理。</p><p style='color:fuchsia'>不挂载的话久会造成无法使用cd或者ls等一系列命令。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mount </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2021/08/12/hello-world/"/>
+      <url>/2021/08/12/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>

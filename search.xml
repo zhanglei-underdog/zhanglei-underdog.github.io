@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>由于开代理导致python环境搭建失败</title>
+      <link href="/2021/09/04/%E7%94%B1%E4%BA%8E%E5%BC%80%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%A4%B1%E8%B4%A5/"/>
+      <url>/2021/09/04/%E7%94%B1%E4%BA%8E%E5%BC%80%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%A4%B1%E8%B4%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="由于开代理导致python环境搭建失败"><a href="#由于开代理导致python环境搭建失败" class="headerlink" title="由于开代理导致python环境搭建失败"></a>由于开代理导致python环境搭建失败</h1><p>以前用ssr翻墙也没遇到这种情况，现在改用clash（价格便宜10块钱80g）翻墙之后，在搭建环境的时候遇到以下两种情况。</p><ol><li><p>安装或运行时时报错</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">raise</span> ValueError(<span class="string">&quot;check_hostname requires server_hostname&quot;</span>)</span><br><span class="line">ValueError: check_hostname requires server_hostname</span><br></pre></td></tr></table></figure></li><li><p>安装包时报以下错误</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Collecting package metadata (current_repodata.json): failed</span><br><span class="line"></span><br><span class="line">An unexpected error has occurred. Conda has prepared the above report.</span><br><span class="line"></span><br><span class="line">If submitted, this report will be used by core maintainers to improve</span><br><span class="line">future releases of conda.</span><br><span class="line">Would you like conda to send this report to the core maintainers?</span><br></pre></td></tr></table></figure></li></ol><p>遇到这样的情况，一般是由两种原因造成，并附上解决方案</p><ul><li><p>每次使用 pip install 命令下载插件的时候，下载的都是最新的版本，导致版本较高，可通过一下方式降级</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install 插件名称  -i http://mirrors.aliyun.com/pypi/simple</span><br></pre></td></tr></table></figure></li><li><p>极可能是开了代理，关闭代理之后，就可以运行或则是安装相应的python环境</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 环境配置 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我们慢慢开始长大了</title>
       <link href="/2021/08/15/%E6%88%91%E4%BB%AC%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E9%95%BF%E5%A4%A7%E4%BA%86/"/>
       <url>/2021/08/15/%E6%88%91%E4%BB%AC%E6%85%A2%E6%85%A2%E5%BC%80%E5%A7%8B%E9%95%BF%E5%A4%A7%E4%BA%86/</url>

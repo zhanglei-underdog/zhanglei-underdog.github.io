@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>python安装相关工具包时极慢</title>
+      <link href="/2021/09/06/python%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7%E5%8C%85%E6%97%B6%E6%9E%81%E6%85%A2/"/>
+      <url>/2021/09/06/python%E5%AE%89%E8%A3%85%E7%9B%B8%E5%85%B3%E5%B7%A5%E5%85%B7%E5%8C%85%E6%97%B6%E6%9E%81%E6%85%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="python安装相关工具包时极慢"><a href="#python安装相关工具包时极慢" class="headerlink" title="python安装相关工具包时极慢"></a>python安装相关工具包时极慢</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None))</span><br></pre></td></tr></table></figure><p>当出现这个警告时代表着你安装时使用的源不太行，我当时的电脑已经配置了清华源（修改配置文件可自行百度），在已经配置清华源的情况下，我的下载还是感觉有点慢，感觉耽误很多时间啊，有没有！</p><p>解决方案也很简单，重新指定下载源。如下</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install 包名  -i http://pypi.mirrors.ustc.edu.cn/simple/</span><br></pre></td></tr></table></figure><p>如果出现报错，在后面再加上信任后缀</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--trusted-host pypi.mirrors.ustc.edu.cn</span><br></pre></td></tr></table></figure><p>这里也一并附上国内其他的下载源（u1s1我感觉中科大的最好用）</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">阿里云 http://mirrors.aliyun.com/pypi/simple/</span><br><span class="line"></span><br><span class="line">中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line"></span><br><span class="line">豆瓣(douban) http://pypi.douban.com/simple/</span><br><span class="line"></span><br><span class="line">清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 环境配置 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>由于开代理导致python环境搭建失败</title>
       <link href="/2021/09/04/%E7%94%B1%E4%BA%8E%E5%BC%80%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%A4%B1%E8%B4%A5/"/>
       <url>/2021/09/04/%E7%94%B1%E4%BA%8E%E5%BC%80%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4python%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA%E5%A4%B1%E8%B4%A5/</url>

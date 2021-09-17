@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>java栈、堆、方法区</title>
+      <link href="/2021/09/17/java%E6%A0%88%E3%80%81%E5%A0%86%E3%80%81%E6%96%B9%E6%B3%95%E5%8C%BA/"/>
+      <url>/2021/09/17/java%E6%A0%88%E3%80%81%E5%A0%86%E3%80%81%E6%96%B9%E6%B3%95%E5%8C%BA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="java-堆、栈、方法区"><a href="#java-堆、栈、方法区" class="headerlink" title="java 堆、栈、方法区"></a>java 堆、栈、方法区</h1><h2 id="三个区的不同之处"><a href="#三个区的不同之处" class="headerlink" title="三个区的不同之处"></a>三个区的不同之处</h2><ul><li><h3 id="堆区"><a href="#堆区" class="headerlink" title="堆区:"></a>堆区:</h3><p>1.<strong>存储的全部是对象</strong>，每个对象都包含一个与之对应的class的信息。(class的目的是得到操作指令)<br>2.jvm只有一个堆区(heap)被所有线程共享，堆中不存放基本类型和对象引用，<strong>只存放对象本身</strong> 。</p></li><li><h3 id="栈区"><a href="#栈区" class="headerlink" title="栈区:"></a>栈区:</h3><p>1.每个线程包含一个栈区，栈中只保存<strong>基础数据类型的值</strong>和<strong>对象引用以及基础数据的引用</strong><br>2.每个栈中的数据(基础数据类型和对象引用)都是私有的，其他栈不能访问。<br>3.栈分为3个部分：基本类型变量区、执行环境上下文、操作指令区(存放操作指令)。 </p></li><li><h3 id="方法区"><a href="#方法区" class="headerlink" title="方法区:"></a>方法区:</h3><p>1.又叫静态区，跟堆一样，被所有的线程共享。<strong>方法区包含所有的class和static变量</strong>。<br>2.方法区中<strong>包含的都是在整个程序中永远唯一的元素</strong>，如class，static变量。 </p></li></ul><p> <img src="/articleImg/11_article/img1.png" alt="img1"></p><h3 id="什么是栈区的对象引用"><a href="#什么是栈区的对象引用" class="headerlink" title="什么是栈区的对象引用"></a>什么是栈区的对象引用</h3><p><strong>对象</strong>，就是类的一个实例化，把一个抽象不好理解的类举出一个实体来，例如人类是一个类，会吃喝拉撒，实例化出一个小明这个具体的人。 对象引用，就是得给这个人取个名字来指代他，跟c++的指针一样，指向这个人，可以给他一个名字王小明，王小明就是<strong>对象引用</strong>。我们想到这个人的时候就会用王小明去代替他，例如 王小明今天吃了什么，王小明多高，多重，是这个人的属性，用编程语言就是 print（王小明.身高）<br>那么在内存上有什么区别呢，当我 用人这个类实例化出王小明时，电脑是这样识别的 （人 王小明），王小明=new 人（185，60），先给出一个对象引用，此时王小明这个代号可以指向任何人，你也可以叫王小明，他也可以，然后我实例化出一个人，我把王小明这个代号指向了这个人，这个人的内存是在堆内存里的，而王小明这个对象引用是在栈内存里的</p><p>说白了对象引用就是实例对象的名字！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Java </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 堆栈方法区 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>java之对象之间的强制类型转换</title>
       <link href="/2021/09/17/java%E4%B9%8B%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
       <url>/2021/09/17/java%E4%B9%8B%E5%AF%B9%E8%B1%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>由八皇后问题引出----判断矩阵元素是否在同一斜线上</title>
+      <link href="/2021/10/14/%E7%94%B1%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E5%BC%95%E5%87%BA-%E5%88%A4%E6%96%AD%E7%9F%A9%E9%98%B5%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%9C%E7%BA%BF%E4%B8%8A/"/>
+      <url>/2021/10/14/%E7%94%B1%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98%E5%BC%95%E5%87%BA-%E5%88%A4%E6%96%AD%E7%9F%A9%E9%98%B5%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%9C%A8%E5%90%8C%E4%B8%80%E6%96%9C%E7%BA%BF%E4%B8%8A/</url>
+      
+        <content type="html"><![CDATA[<h1 id="由八皇后问题引出—-判断矩阵元素是否在同一斜线上"><a href="#由八皇后问题引出—-判断矩阵元素是否在同一斜线上" class="headerlink" title="由八皇后问题引出—-判断矩阵元素是否在同一斜线上"></a>由八皇后问题引出—-判断矩阵元素是否在同一斜线上</h1><h2 id="图1"><a href="#图1" class="headerlink" title="图1"></a>图1</h2><p> <img src="/articleImg/24_article/graph.png" alt="graph"></p><h2 id="图2"><a href="#图2" class="headerlink" title="图2"></a>图2</h2><p> <img src="/articleImg/24_article/graph2.png" alt="graph2"></p><p>如果该判断方法在八皇后中应用时，最好定义一个array[8]数组，存放以放置的皇后，在array数组中下标代表行数，数组值代表皇后所在列数。这样遍历起来会更方便。否则还要去遍历mark[][] [8] [8]二维数组。直接用array数组中对应的信息，去做判断效率很高！</p><p>用于其他算法，就直接使用即可~</p><p>继续加油！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构与算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 判断矩阵元素是否在同一斜线 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在Jetson上融合yolov5目标检测与双目摄像头测距</title>
       <link href="/2021/10/13/%E5%9C%A8Jetson%E4%B8%8A%E8%9E%8D%E5%90%88yolov5%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%8F%8C%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/"/>
       <url>/2021/10/13/%E5%9C%A8Jetson%E4%B8%8A%E8%9E%8D%E5%90%88yolov5%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E4%B8%8E%E5%8F%8C%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%B7%9D/</url>

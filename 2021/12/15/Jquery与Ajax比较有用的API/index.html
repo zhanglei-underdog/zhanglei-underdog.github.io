@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jquery与Ajax比较有用的API | blog</title><meta name="keywords" content="前端框架"><meta name="author" content="张磊"><meta name="copyright" content="张磊"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Jquery与Ajax比较有用的APIjQuery的概述​    说白了: JQ就是js库, 封装了JS常见的操作,我们使用JS起来更加的简单  (特别是dom这块) jQuery的作用​    jQuery最主要的作用是简化js的Dom树的操作  需要记忆的语法 JS对象转成jQ对象  ： $(js对象) JQ对象转成JS对象  ： JQ对象[下标] 或者 JQ对象.get(下标) 下标一般写0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jquery与Ajax比较有用的API">
+<meta property="og:url" content="http://example.com/2021/12/15/Jquery%E4%B8%8EAjax%E6%AF%94%E8%BE%83%E6%9C%89%E7%94%A8%E7%9A%84API/index.html">
+<meta property="og:site_name" content="blog">
+<meta property="og:description" content="Jquery与Ajax比较有用的APIjQuery的概述​    说白了: JQ就是js库, 封装了JS常见的操作,我们使用JS起来更加的简单  (特别是dom这块) jQuery的作用​    jQuery最主要的作用是简化js的Dom树的操作  需要记忆的语法 JS对象转成jQ对象  ： $(js对象) JQ对象转成JS对象  ： JQ对象[下标] 或者 JQ对象.get(下标) 下标一般写0">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/articleImg/Java/cover.png">
+<meta property="article:published_time" content="2021-12-15T15:16:40.000Z">
+<meta property="article:modified_time" content="2021-12-15T15:17:59.988Z">
+<meta property="article:author" content="张磊">
+<meta property="article:tag" content="前端框架">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/articleImg/Java/cover.png"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/2021/12/15/Jquery%E4%B8%8EAjax%E6%AF%94%E8%BE%83%E6%9C%89%E7%94%A8%E7%9A%84API/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-right"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Jquery与Ajax比较有用的API',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-15 23:17:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/profile.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">40</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 所有文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/articleImg/Java/cover.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 所有文章</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Jquery与Ajax比较有用的API</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-12-15T15:16:40.000Z" title="发表于 2021-12-15 23:16:40">2021-12-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-15T15:17:59.988Z" title="更新于 2021-12-15 23:17:59">2021-12-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/javaweb/">javaweb</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Jquery与Ajax比较有用的API"><a href="#Jquery与Ajax比较有用的API" class="headerlink" title="Jquery与Ajax比较有用的API"></a>Jquery与Ajax比较有用的API</h1><h2 id="jQuery的概述"><a href="#jQuery的概述" class="headerlink" title="jQuery的概述"></a>jQuery的概述</h2><p>​    说白了: JQ就是js库, 封装了JS常见的操作,我们使用JS起来更加的简单  (特别是dom这块)</p>
+<h2 id="jQuery的作用"><a href="#jQuery的作用" class="headerlink" title="jQuery的作用"></a>jQuery的作用</h2><p>​    jQuery最主要的作用是简化js的Dom树的操作 </p>
+<h2 id="需要记忆的语法"><a href="#需要记忆的语法" class="headerlink" title="需要记忆的语法"></a>需要记忆的语法</h2><ul>
+<li>JS对象转成jQ对象  ： $(js对象)</li>
+<li>JQ对象转成JS对象  ： JQ对象[下标] 或者 JQ对象.get(下标) 下标一般写0</li>
+<li>基本选择器</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选择器名称</th>
+<th>语法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标签选择器（元素选择器）</td>
+<td>$(“html标签名”)</td>
+<td>获得所有匹配标签名称的于元素</td>
+</tr>
+<tr>
+<td>id选择器</td>
+<td>$(“#id的属性值”)</td>
+<td>获得与指定id属性值匹配的元素</td>
+</tr>
+<tr>
+<td>类选择器</td>
+<td>$(“.class的属性值”)</td>
+<td>获得与指定的class属性值匹配的元素</td>
+</tr>
+</tbody></table>
+<ul>
+<li>JQ操作样式</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>API方法</th>
+<th align="left">解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>css(name) 使用很少</td>
+<td align="left">获取CSS样式</td>
+</tr>
+<tr>
+<td>css(name,value)</td>
+<td align="left">设置CSS样式</td>
+</tr>
+<tr>
+<td>addClass(类名)</td>
+<td align="left">给标签添加类名</td>
+</tr>
+<tr>
+<td>removeClass(类名)</td>
+<td align="left">删除标签的类名</td>
+</tr>
+</tbody></table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="comment">//目标: 鼠标移入输入框的时候，设置输入框的背景色为红色，移出输入框的时候设置输入框的背景色为蓝色</span></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 获取标签的css样式的方法: css(样式名) 用的很少</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 设置标签的css样式的方法: css(样式名,样式值),该方法其实就是改变了标签的行内样式</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">//$(&quot;#ipt&quot;).css(&quot;background-color&quot;,&quot;red&quot;)</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//给输入框标签添加类名为&quot;redStyle&quot;</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// addClass(类名)添加类名</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">&quot;#ipt&quot;</span>).addClass(<span class="string">&quot;redStyle&quot;</span>)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 移除blueStyle类名</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">&quot;#ipt&quot;</span>).removeClass(<span class="string">&quot;blueStyle&quot;</span>)</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="comment">//$(&quot;#ipt&quot;).css(&quot;background-color&quot;,&quot;blue&quot;)</span></span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//给输入框标签添加类名为&quot;blueStyle&quot;</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">&quot;#ipt&quot;</span>).addClass(<span class="string">&quot;blueStyle&quot;</span>)</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//移除redStyle类名</span></span></span><br><span class="line"><span class="javascript">            $(<span class="string">&quot;#ipt&quot;</span>).removeClass(<span class="string">&quot;redStyle&quot;</span>)</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript"> </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用JQ操作DOM</p>
+<table>
+<thead>
+<tr>
+<th>API方法</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>val([value])</td>
+<td>获得/设置标签里面value属性相应的值</td>
+</tr>
+<tr>
+<td>text([value])</td>
+<td>获得/设置元素的文本内容</td>
+</tr>
+<tr>
+<td>html([value])</td>
+<td>获得/设置元素的标签体内容</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>JQ中事件的使用</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jq对象.事件方法名(function()&#123;&#125;);</span><br><span class="line"></span><br><span class="line">eg:点击事件</span><br><span class="line">btn.click(function()&#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>JQ遍历</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">jquery对象.each(function(index,element)&#123;&#125;);</span><br><span class="line"></span><br><span class="line">其中:(参数名字随便取的)</span><br><span class="line">index:就是元素在集合中的索引</span><br><span class="line">element：就是集合中的每一个元素对象</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>jquery的全局方法遍历</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$.each(jquery对象,function(index,element)&#123;&#125;);</span><br><span class="line"></span><br><span class="line">其中，</span><br><span class="line">index:就是元素在集合中的索引</span><br><span class="line">element：就是集合中的每一个元素对象</span><br></pre></td></tr></table></figure>
+
+<p>详细见：<a target="_blank" rel="noopener" href="http://www.jquery.com/">http://www.jquery.com</a></p>
+<h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><p>解释 ：   AJax是可以做异步的请求,实现局部刷新一种客户端技术 。 注意关键词 异步~</p>
+<h2 id="JQ的AJAX介绍"><a href="#JQ的AJAX介绍" class="headerlink" title="JQ的AJAX介绍"></a>JQ的AJAX介绍</h2><h4 id="JQuery的Ajax的API"><a href="#JQuery的Ajax的API" class="headerlink" title="JQuery的Ajax的API"></a>JQuery的Ajax的API</h4><table>
+<thead>
+<tr>
+<th>请求方式</th>
+<th>语法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>GET请求</strong></td>
+<td>$.get(url, <em>[data]</em>, <em>[callback]</em>, <em>[type]</em>)</td>
+</tr>
+<tr>
+<td><strong>POST请求</strong></td>
+<td>$.post(url, <em>[data]</em>, <em>[callback]</em>, <em>[type]</em>)</td>
+</tr>
+<tr>
+<td><strong>AJAX请求</strong></td>
+<td>$.ajax([settings])</td>
+</tr>
+</tbody></table>
+<h4 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h4><ul>
+<li><p>get方式,  语法    <code>$.get(url, [data], [callback], [type]);</code></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>请求的服务器端url地址</td>
+</tr>
+<tr>
+<td>data</td>
+<td>发送给服务器端的请求参数，格式是key=value；get请求的参数可以直接写在url后面</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>当请求成功后的回掉函数，可以在函数体中编写我们的逻辑代码</td>
+</tr>
+<tr>
+<td>type</td>
+<td>预期的返回数据的类型(默认为text)，取值可以是 xml, html, script, json, text, _defaul等   (最常用json)</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明一个方法使用jQuery的ajax发送异步的get请求</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $.get(<span class="string">&quot;/demo01?username=tom&quot;</span>,<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//在这个回调函数中处理响应数据result</span></span><br><span class="line">        <span class="comment">//将响应数据展示在id为msg的div中</span></span><br><span class="line">        $(<span class="string">&quot;#msg&quot;</span>).html(result)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="post"><a href="#post" class="headerlink" title="post()"></a>post()</h4><ul>
+<li>post方式, 语法 <code>$.post(url, [data], [callback], [type])</code></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>url</td>
+<td>请求的服务器端url地址</td>
+</tr>
+<tr>
+<td>data</td>
+<td>发送给服务器端的请求参数，格式是key=value</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>当请求成功后的回掉函数，可以在函数体中编写我们的逻辑代码</td>
+</tr>
+<tr>
+<td>type</td>
+<td>预期的返回数据的类型(默认为text)，取值可以是 xml, html, script, json, text, _defaul等  (最常用json)</td>
+</tr>
+</tbody></table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明一个方法使用jQuery的ajax方法发送异步请求</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn5</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        <span class="attr">url</span>:<span class="string">&quot;/demo01&quot;</span>, <span class="comment">//请求路径</span></span><br><span class="line">        <span class="attr">data</span>:<span class="string">&quot;username=lucy&quot;</span>, <span class="comment">//请求参数</span></span><br><span class="line">        <span class="attr">type</span>:<span class="string">&quot;POST&quot;</span>, <span class="comment">//请求方式</span></span><br><span class="line">        <span class="attr">success</span>:<span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">            $(<span class="string">&quot;#msg&quot;</span>).html(result)</span><br><span class="line">        &#125;, <span class="comment">//请求成功时候的回调函数</span></span><br><span class="line">        <span class="attr">error</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            $(<span class="string">&quot;#msg&quot;</span>).html(<span class="string">&quot;服务器异常&quot;</span>)</span><br><span class="line">        &#125; <span class="comment">//请求失败时候的回调函数</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Ajax之后，服务器端的代码一般的写法"><a href="#使用Ajax之后，服务器端的代码一般的写法" class="headerlink" title="使用Ajax之后，服务器端的代码一般的写法"></a>使用Ajax之后，服务器端的代码一般的写法</h2><p> <img src="/articleImg/45_article/mycode.png" alt="mycode"></p>
+<p>自己学后端起步有点晚了，不过我相信，兴趣决定高度，努力决定程度，加油吧~摩托！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">张磊</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/12/15/Jquery%E4%B8%8EAjax%E6%AF%94%E8%BE%83%E6%9C%89%E7%94%A8%E7%9A%84API/">http://example.com/2021/12/15/Jquery%E4%B8%8EAjax%E6%AF%94%E8%BE%83%E6%9C%89%E7%94%A8%E7%9A%84API/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a></div><div class="post_share"><div class="social-share" data-image="/articleImg/Java/cover.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/12/15/jsp%E6%8F%90%E4%BA%A4form%E8%A1%A8%E5%8D%95%E5%88%B0servlet%EF%BC%8C%E4%BD%86%E5%8F%96%E5%80%BC%E5%85%A8%E4%B8%BA%E7%A9%BA%EF%BC%9F/"><img class="next-cover" src="/articleImg/Java/cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">jsp提交form表单到servlet，但取值全为空？</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/profile.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">张磊</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">45</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">40</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zhanglei-underdog"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="mailto:zhanglei.szu@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jquery%E4%B8%8EAjax%E6%AF%94%E8%BE%83%E6%9C%89%E7%94%A8%E7%9A%84API"><span class="toc-number">1.</span> <span class="toc-text">Jquery与Ajax比较有用的API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E7%9A%84%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">jQuery的概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">jQuery的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E8%AE%B0%E5%BF%86%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">需要记忆的语法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ajax"><span class="toc-number">2.</span> <span class="toc-text">Ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JQ%E7%9A%84AJAX%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.1.</span> <span class="toc-text">JQ的AJAX介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JQuery%E7%9A%84Ajax%E7%9A%84API"><span class="toc-number">2.1.0.1.</span> <span class="toc-text">JQuery的Ajax的API</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#get"><span class="toc-number">2.1.0.2.</span> <span class="toc-text">get()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#post"><span class="toc-number">2.1.0.3.</span> <span class="toc-text">post()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Ajax%E4%B9%8B%E5%90%8E%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%AB%AF%E7%9A%84%E4%BB%A3%E7%A0%81%E4%B8%80%E8%88%AC%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">使用Ajax之后，服务器端的代码一般的写法</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/12/15/Jquery%E4%B8%8EAjax%E6%AF%94%E8%BE%83%E6%9C%89%E7%94%A8%E7%9A%84API/" title="Jquery与Ajax比较有用的API"><img src="/articleImg/Java/cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jquery与Ajax比较有用的API"/></a><div class="content"><a class="title" href="/2021/12/15/Jquery%E4%B8%8EAjax%E6%AF%94%E8%BE%83%E6%9C%89%E7%94%A8%E7%9A%84API/" title="Jquery与Ajax比较有用的API">Jquery与Ajax比较有用的API</a><time datetime="2021-12-15T15:16:40.000Z" title="发表于 2021-12-15 23:16:40">2021-12-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 张磊</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: '6Wm5zXjEwCcNz2DiwRmsNmyl-gzGzoHsz',
+      appKey: '8tiKHDgtqsRoDg0Eg2lWKe4X',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: false,
+      path: window.location.pathname,
+      requiredFields: ["nick,mail"],
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script type="text/javascript" src="/js/cursor.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body></html>

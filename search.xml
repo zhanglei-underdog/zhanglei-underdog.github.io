@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>状态机设计及仿真</title>
+      <link href="/2022/09/06/%E7%8A%B6%E6%80%81%E6%9C%BA%E8%AE%BE%E8%AE%A1%E5%8F%8A%E4%BB%BF%E7%9C%9F/"/>
+      <url>/2022/09/06/%E7%8A%B6%E6%80%81%E6%9C%BA%E8%AE%BE%E8%AE%A1%E5%8F%8A%E4%BB%BF%E7%9C%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="状态机设计及仿真"><a href="#状态机设计及仿真" class="headerlink" title="状态机设计及仿真"></a>状态机设计及仿真</h1><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220906090339479.png" alt="image-20220906090339479"></p><h1 id="编码仿真1"><a href="#编码仿真1" class="headerlink" title="编码仿真1:"></a><strong>编码仿真1:</strong></h1><p>编写一个自动售货机，功能如下：</p><p>共有三种纸币入口，分别支持10元，20元，50元。货物售价为80元。需要支持找钱功能（注意，找钱有两种情况， 90元和100元；而110元和120元的情况不符合实际应用场景，所以不存在找钱的情况）。</p><p>参照今天讲的自动售饮料机。</p><p>完成RTL编码，完成testbench编码。</p><h2 id="状态转换图"><a href="#状态转换图" class="headerlink" title="状态转换图"></a>状态转换图</h2><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220905235115349.png" alt="image-20220905235115349"></p><h2 id="RTL编码如下"><a href="#RTL编码如下" class="headerlink" title="RTL编码如下"></a>RTL编码如下</h2><p>设计的是<code>moore</code>型状态机，即输出状态与输入状态无关，next的状态转移完全由状态转移图决定。</p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220905235833245.png" alt="image-20220905235833245"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220905235901559.png" alt="image-20220905235901559"></p><h2 id="testbench编写如下"><a href="#testbench编写如下" class="headerlink" title="testbench编写如下"></a>testbench编写如下</h2><p>test中只测试了三种情况：</p><p>情况1：连续给8个10元</p><p>情况2： 连续給4个20元</p><p>情况3：连续给两个50元</p><p>经vcs分析后，三种情况的结果均符合预期。</p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220905235439327.png" alt="image-20220905235439327"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220905235539217.png" alt="image-20220905235539217"></p><h2 id="仿真测试"><a href="#仿真测试" class="headerlink" title="仿真测试"></a>仿真测试</h2><p> 符合预期<img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220905235251860.png" alt="image-20220905235251860"></p><h1 id="编码仿真2："><a href="#编码仿真2：" class="headerlink" title="编码仿真2："></a>编码仿真2：</h1><p>完成一个序列检测器101011011的序列检测，完成RTL编程，完成testbench的编写，并利用VCS进行仿真。(说明：注意最后一个状态S9的跳转)</p><h2 id="状态编码"><a href="#状态编码" class="headerlink" title="状态编码"></a>状态编码</h2><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220906104801142.png" alt="image-20220906104801142"></p><h2 id="RTL编码"><a href="#RTL编码" class="headerlink" title="RTL编码"></a>RTL编码</h2><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220906111443068.png" alt="image-20220906111443068"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220906111515456.png" alt="image-20220906111515456"></p><h2 id="testbench-编写"><a href="#testbench-编写" class="headerlink" title="testbench 编写"></a>testbench 编写</h2><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220906111612098.png" alt="image-20220906111612098"></p><h2 id="仿真测试-1"><a href="#仿真测试-1" class="headerlink" title="仿真测试"></a>仿真测试</h2><p><img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220906104051431.png" alt="image-20220906104051431"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Verilog </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 状态机设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>周赛子数组子序列计数题目</title>
       <link href="/2022/08/07/%E5%91%A8%E8%B5%9B%E5%AD%90%E6%95%B0%E7%BB%84%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0%E9%A2%98%E7%9B%AE/"/>
       <url>/2022/08/07/%E5%91%A8%E8%B5%9B%E5%AD%90%E6%95%B0%E7%BB%84%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0%E9%A2%98%E7%9B%AE/</url>

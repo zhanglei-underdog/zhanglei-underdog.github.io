@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>CDC问题汇总</title>
+      <link href="/2022/09/08/CDC%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
+      <url>/2022/09/08/CDC%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CDC问题汇总"><a href="#CDC问题汇总" class="headerlink" title="CDC问题汇总"></a>CDC问题汇总</h1><h2 id="1-What-is-the-difference-between-synchronous-clock-domains-and-asynchronous-clock-domains"><a href="#1-What-is-the-difference-between-synchronous-clock-domains-and-asynchronous-clock-domains" class="headerlink" title="1.What is the difference between synchronous clock domains and asynchronous clock domains?"></a><code>1.What is the difference between synchronous clock domains and asynchronous clock domains?</code></h2><p>同步时钟是指时钟的相位相同或者时钟频率有一定的关系，比如分频或则倍频。异步时钟是指两个时钟的相位和频率没有短息。同步时钟是最常见的数字系统的特性，在设计、验证和后端实现中，有各种主流的设计软件支持，比如逻辑仿真工具，逻辑综合工具，静态时序分析等。异步时钟域需要依赖特定的设计方法和检查方法，最常用的工具是CDC check,比如Spyclass.</p><h2 id="2-Are-synchronous-clock-domain-crossing-safe"><a href="#2-Are-synchronous-clock-domain-crossing-safe" class="headerlink" title="2.Are synchronous clock domain crossing safe?"></a><code>2.Are synchronous clock domain crossing safe?</code></h2><p>不一定，如果同步电路不满足setup time 和 hold time，也是会产生安全问题的。</p><h2 id="3-Name-two-main-problem-caused-by-asynchronous-clock-domain-crossings"><a href="#3-Name-two-main-problem-caused-by-asynchronous-clock-domain-crossings" class="headerlink" title="3.Name two main problem caused by asynchronous clock domain crossings."></a><code>3.Name two main problem caused by asynchronous clock domain crossings.</code></h2><p>亚稳态、数据保持、信号重聚、数据跨时钟域传输、异步复位同步释放。</p><ul><li><strong>metastability</strong></li></ul><p>​    解决方式： 1：采用FIFO，一个时钟域写数据，一个时钟域读数据、 2：定义握手信号，我发完，你收 、 3：定义enable信号，采用打两拍的方式，让enable信号稳定有效，然后取数据。</p><p> 其中第三种方式的详细电路图如下：</p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908173752885.png" alt="image-20220908173752885"></p><ul><li><p><strong>Reconvergence</strong></p></li><li><p><strong>data hold</strong> ： 通过两个寄存器，和一个或门，拓宽原始信号，电路图如下</p></li></ul><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908174059386.png" alt="image-20220908174059386"></p><ul><li><p><strong>design intent</strong></p></li><li><p><strong>reset Synchronization</strong> : 通过异步复位同步释放。</p></li></ul><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908173833174.png" alt="image-20220908173833174"></p><h2 id="4-Does-metastability-problem-depends-upon-the-frequency-of-destiation-clock"><a href="#4-Does-metastability-problem-depends-upon-the-frequency-of-destiation-clock" class="headerlink" title="4.Does metastability problem depends upon the frequency of destiation clock?"></a><code>4.Does metastability problem depends upon the frequency of destiation clock?</code></h2><p> 亚稳态跟时钟频率无关，但是MTBF跟时钟频率有关系</p><h2 id="5-Can-STA-PrimeTime-detect-asynchronous-clock-domain-crossings"><a href="#5-Can-STA-PrimeTime-detect-asynchronous-clock-domain-crossings" class="headerlink" title="5.Can STA (PrimeTime)detect asynchronous clock domain crossings?"></a><code>5.Can STA (PrimeTime)detect asynchronous clock domain crossings?</code></h2><p> STA是静态时序分析，STA只能检查到同步时序电路 clock domain crossing.</p><h2 id="6-Can-clock-tree-synthesis-CTS-fix-clock-domain-crossing-issue"><a href="#6-Can-clock-tree-synthesis-CTS-fix-clock-domain-crossing-issue" class="headerlink" title="6.Can clock tree synthesis (CTS) fix clock domain crossing issue     ?"></a><code>6.Can clock tree synthesis (CTS) fix clock domain crossing issue     ?</code></h2><p>  <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908175032291.png" alt="image-20220908175032291"></p><p><code>CTS</code>无法解决<code>CDC</code>问题。CTS只能处理同一时钟源下的处理流程。</p><h1 id="分析题："><a href="#分析题：" class="headerlink" title="分析题："></a><strong>分析题：</strong></h1><ol><li>以下电路是否符合CDC的设计方法？有哪些问题？</li></ol><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908205721281.png" alt="image-20220908205721281"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908204757965.png" alt="image-20220908204757965"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908204840699.png" alt="image-20220908204840699"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908204942121.png" alt="image-20220908204942121"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908205935183.png" alt="image-20220908205935183"></p><ol start="2"><li>以下电路有什么错误？</li></ol><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908205218002.png" alt="image-20220908205218002"></p><p>电路正确，保证了异步清零，同步释放。</p><p>rst_n有效时，立马清0</p><p>rst_n复位时，信号1打两拍，送给第三个触发器的reset端。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数字IC设计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CDC问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>同步、异步FIFO设计与仿真</title>
       <link href="/2022/09/08/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5FIFO%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BB%BF%E7%9C%9F/"/>
       <url>/2022/09/08/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5FIFO%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BB%BF%E7%9C%9F/</url>

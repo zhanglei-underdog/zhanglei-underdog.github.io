@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>同步、异步FIFO设计与仿真</title>
+      <link href="/2022/09/08/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5FIFO%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BB%BF%E7%9C%9F/"/>
+      <url>/2022/09/08/%E5%90%8C%E6%AD%A5%E3%80%81%E5%BC%82%E6%AD%A5FIFO%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BB%BF%E7%9C%9F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="同步FIFO设计与仿真"><a href="#同步FIFO设计与仿真" class="headerlink" title="同步FIFO设计与仿真"></a>同步FIFO设计与仿真</h1><h2 id="双端口RAM-设计"><a href="#双端口RAM-设计" class="headerlink" title="双端口RAM 设计"></a>双端口RAM 设计</h2><p>思路总结：先定义一个双端口RAM模块用于存储数据和写入数据。</p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220907222834289.png" alt="image-20220907222834289"></p><p>大型RAM需要调用相关IP。小项目中的双端口RAM的实现是基于<code>reg[RAM_WIDTH-1:0] memory[RAM_DEPTH-1:0]</code>进行操作，主要思路是通过读写指针，这里的地址指针其实是循环指针，因为到了最高位之后，它会溢出返回到起始位置。在这个过程当中我们有两种方式进行判断RAM是否已满。方法一：通常都计数器<code>fcount</code>进行计数，执行写操作是<code>fcount</code>加1，执行读操作时<code>fcount</code>减1。 方法二：地址位扩展一位，用最高位来判断空满。这里采用的是方法一。具体RTL编码如下：</p><p>其实如果真正在笔试中，从新定义一个RAM module确实很浪费时间，可以之间再fifo中利用<code>reg[RAM_WIDTH-1:0] memory[RAM_DEPTH-1:0]</code>进行形象替代。</p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220907223724952.png" alt="image-20220907223724952"></p><h2 id="基于双端口RAM，定义同步FIFO"><a href="#基于双端口RAM，定义同步FIFO" class="headerlink" title="基于双端口RAM，定义同步FIFO"></a>基于双端口RAM，定义同步FIFO</h2><p>然后再写一个同步FIFO模块，包住RAM，FIFO所有的存数据、取数据均在RAM中进行。FIFO需要满足的主要条件是 <code>满不能写，空不能读</code>，根据这个原则，来产生我们<code>empty</code>信号和<code>full</code>信号。</p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220907230056584.png" alt="image-20220907230056584"></p><p> 具体的RTL编码如下</p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220907225427890.png" alt="image-20220907225427890"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220907225441519.png" alt="image-20220907225441519"></p><h2 id="testbench编写"><a href="#testbench编写" class="headerlink" title="testbench编写"></a>testbench编写</h2><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220907230441717.png" alt="image-20220907230441717"></p><h2 id="仿真波形"><a href="#仿真波形" class="headerlink" title="仿真波形"></a>仿真波形</h2><p><img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220907230530110.png" alt="image-20220907230530110"></p><p>波形分析，由于write_enable和read_enable持续时间较长，会导致在这两个信号有效期间多次进行读写。波形产出结果符合预期。</p><h1 id="异步FIFO设计仿真"><a href="#异步FIFO设计仿真" class="headerlink" title="异步FIFO设计仿真"></a>异步FIFO设计仿真</h1><ul><li>异步FIFO指的时读时钟域和写时钟域的时钟频率不一样</li><li>判满条件选取的是扩展地址位的方法</li><li>与同步FIFO拓展地址位的不同有两点：1：使用格雷码，作为实际数据存取地址。 2：在读时钟有效时，采样写时钟域的写地址、在写时钟有效时，采样读时钟域的读地址，这样主要是为了后续进行判空和判满。</li><li>格雷码求取方式 <code>gray = (in&gt;&gt;1)^in</code></li></ul><h2 id="深度2048-宽度-16bit的异步FIFO-RTL编码"><a href="#深度2048-宽度-16bit的异步FIFO-RTL编码" class="headerlink" title="深度2048 宽度 16bit的异步FIFO RTL编码"></a>深度2048 宽度 16bit的异步FIFO RTL编码</h2><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908115053188.png" alt="image-20220908115053188"></p><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908115116763.png" alt="image-20220908115116763"></p><h2 id="testbench-编写"><a href="#testbench-编写" class="headerlink" title="testbench 编写"></a>testbench 编写</h2><p> <img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908115312144.png" alt="image-20220908115312144"></p><h2 id="仿真波形-1"><a href="#仿真波形-1" class="headerlink" title="仿真波形"></a>仿真波形</h2><p><img src="https://zblogimage.oss-cn-shenzhen.aliyuncs.com/image-20220908114245036.png" alt="image-20220908114245036"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Verilog </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> FIFO设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>状态机设计及仿真</title>
       <link href="/2022/09/06/%E7%8A%B6%E6%80%81%E6%9C%BA%E8%AE%BE%E8%AE%A1%E5%8F%8A%E4%BB%BF%E7%9C%9F/"/>
       <url>/2022/09/06/%E7%8A%B6%E6%80%81%E6%9C%BA%E8%AE%BE%E8%AE%A1%E5%8F%8A%E4%BB%BF%E7%9C%9F/</url>
